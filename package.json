@@ -15,5 +15,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "reactdom": "^2.0.0"
-  }
+  },
+  "browserslist": [
+        "last 2 versions"
+      ]
+  
 }
