@@ -1,0 +1,151 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.app {
+    height:100vh;
+    width:100vw;
+    overflow-x: hidden;
+}
+.header {
+    display:flex;
+    justify-content: space-between;
+    padding-inline: 2rem;
+    align-items: center;
+    height:10vh;
+    width:100%;
+    padding-block: 0.25rem;
+    background-color: rgb(109, 66, 141);
+    color:white;
+}
+.logo-img {
+    height:3rem;
+    width:3rem;
+}
+.logo-container {
+    display:flex;
+    gap:1rem;
+    align-items: center;
+}
+.nav-list {
+    display:flex;
+    list-style-type: none;
+    gap:2rem;
+}
+.body {
+    width:100%;
+}
+.logo-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color:rgb(223, 223, 32);
+}
+.items {
+    font-weight: 800;
+    letter-spacing: 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition:all 0.5s ease-in;
+    font-size: 1.2rem;
+}
+.items:hover {
+    cursor:pointer;
+    color:rgb(223, 223, 32);
+    scale:1.04;
+}
+.body {
+    padding-inline: 2rem;
+    padding-top:0.25rem;
+}
+.search-container {
+    padding-inline:1rem;
+    width:100%;
+    height:5vh;
+    display:flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    display:flex;
+    gap:3rem;
+}
+.rest-container {
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    row-gap:2rem;
+    margin-bottom: 1rem;
+    margin-top:0.75rem;
+}
+.search-ip {
+    height:100%;
+    width:20%;
+    padding-inline: 0.5rem;
+    font-size: 1.1rem;
+    outline:none;
+}
+.search-btn {
+    outline:none;
+    height:100%;
+    padding-inline:1rem;
+    border-radius: 0.4rem;
+    border:none;
+    background-color: rgb(109, 66, 141);
+    color:white;
+    font-size: 1.1rem;
+}
+.search-btn:hover {
+    cursor:pointer;
+}
+.card {
+    height:20rem;
+    width:22%;
+    background-color:rgb(64, 40, 88);
+    border-radius: 2rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+    padding-inline: 0.5rem;
+    color:white;
+}
+.res-name {
+    height:10%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75em;
+    text-align: center;
+}
+.res-img {
+    height:45%;
+    width:100%;
+    padding-inline: 1rem;
+}
+.res-cuisine {
+    height:15%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    text-align: center;
+}
+.res-rating {
+    height:10%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    text-align: center;
+    font-weight: 600;
+}
+.res-photo {
+    width:100%;
+    object-fit: cover;
+    height:100%;
+    border-radius:1rem;
+}
