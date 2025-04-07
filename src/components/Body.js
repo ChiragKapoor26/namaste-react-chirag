@@ -1,69 +1,27 @@
-import { useState } from "react";
-import Card from "./Card"
-import {restData} from "./utils/mock-data";
+import { useEffect, useState } from "react";
+import Card from "./Card";
+import Shimmer from "./Shimmer";
 const Body = () => {
-    const [listOfRestaurant,setlistOfRestaurant] = useState(restData.card.card.gridElements.infoWithStyle.restaurants);
-    // let listOfRestaurantJS = [
-    //     {
-    //         "info": {
-    //         "id": "234875",
-    //         "name": "Adil Hotel",
-    //         "cloudinaryImageId": "gp1ityra6utvzqn6ghnv",
-    //         "locality": "Rautha Wada",
-    //         "areaName": "Chhindwara Locality",
-    //         "costForTwo": "₹150 for two",
-    //         "cuisines": [
-    //         "North Indian",
-    //         "Biryani",
-    //         "Tandoor"
-    //         ],
-    //         "avgRating": 4.3,
-    //         }
-    //         },
-    //     {
-    //             "info": {
-    //             "id": "150591",
-    //             "name": "Satkar Restaurant",
-    //             "cloudinaryImageId": "rvxp5xbniat84r6efku2",
-    //             "locality": "Sinchai Colony",
-    //             "areaName": "Satkar Chowk",
-    //             "costForTwo": "₹250 for two",
-    //             "cuisines": [
-    //             "North Indian",
-    //             "South Indian",
-    //             "Indian",
-    //             "Salads",
-    //             "Desserts"
-    //             ],
-    //             "avgRating": 4.4,
-    //             }
-    //         },
-    //     {
-    //             "info": {
-    //             "id": "151649",
-    //             "name": "Hotel Sai Nath & Sai Restaurant",
-    //             "cloudinaryImageId": "vkhcohhmqfczycw9vsar",
-    //             "locality": "railway station",
-    //             "areaName": "Chhindwara Locality",
-    //             "costForTwo": "₹200 for two",
-    //             "cuisines": [
-    //             "North Indian",
-    //             "South Indian",
-    //             "Chinese",
-    //             "Beverages",
-    //             "Fast Food",
-    //             "Desserts"
-    //             ],
-    //             "avgRating": 4.3,
-    //             }
-    //         }
-    // ]
-    return (
+    const [listOfRestaurant,setlistOfRestaurant] = useState([]);
+    useEffect(()=> {
+        fetchData();
+    },[])
+    // Creating the function for fetching the data from the api
+    const fetchData = async () => {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.3316609&lng=75.6193539&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const jsonData = await data.json();
+        setlistOfRestaurant(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+    // The Below Concept is known as Conditional Rendering
+    // if(listOfRestaurant.length === 0) {
+    //     return(<Shimmer/>)
+    // }
+    return listOfRestaurant.length === 0 ? <Shimmer/> :(
         <div className="body">
             <div className="search-container">
                 <input className="search-ip" placeholder="Order from here..."></input>
                 <button className="search-btn" onClick={() => {
-                    setlistOfRestaurant(listOfRestaurant.filter((res)=>res.info.avgRating>4.1 ));
+                    setlistOfRestaurant(listOfRestaurant.filter((res)=>res.info.avgRating>4.3 ));
                 }}>Top Rated Restaurant</button>
             </div>
             <div className="rest-container">
