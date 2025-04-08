@@ -23,5 +23,5 @@ useState() => Used to Generate Superpowerful React variables
 Import useState from react like a named import
 useEffect() => This is used to Re-renders the page after Calling the api.
 
-# Shimmer UI :- In this type of UI we loads a fake page until we got the data from the UI
+# Shimmer UI :- In this type of UI we loads a fake page until we got the data from the Backend API
 This Provides us a much better User Experience
