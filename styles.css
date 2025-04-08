@@ -33,6 +33,7 @@
     display:flex;
     list-style-type: none;
     gap:2rem;
+    align-items: center;
 }
 .body {
     width:100%;
@@ -170,4 +171,20 @@
     align-items: center;
     overflow: hidden;
     padding-inline: 0.5rem;
+}
+.login {
+    outline:none;
+    height:100%;
+    padding-inline:0.5rem;
+    padding-block:0.25rem;
+    border-radius: 0.4rem;
+    border:none;
+    background-color:#ffa800;
+    color:black;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }

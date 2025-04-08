@@ -16,7 +16,7 @@ const Body = () => {
     // if(listOfRestaurant.length === 0) {
     //     return(<Shimmer/>)
     // }
-    return listOfRestaurant.length === 0 ? <Shimmer/> :(
+    return listOfRestaurant.length===0?<Shimmer/>: (
         <div className="body">
             <div className="search-container">
                 <input className="search-ip" placeholder="Order from here..."></input>
