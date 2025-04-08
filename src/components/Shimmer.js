@@ -4,6 +4,7 @@ const Shimmer = () => {
         <div className="body">
             <div className="search-container">
                 <input className="search-ip" placeholder="Order from here..."></input>
+                <button className="search-btn">Search</button>
                 <button className="search-btn">Top Rated Restaurant</button>
             </div>
             <div className="shimmer-container">
