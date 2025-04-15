@@ -1,5 +1,6 @@
 import chefimg from "../images/chef.svg"
 import {useState} from "react";
+import {Link} from "react-router-dom"
 const Header = () => {
     const [LoginButton,setLoginButton] = useState("Login");
     return (
@@ -10,8 +11,9 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul className="nav-list">
-                    <li className="items">HOME</li>
-                    <li className="items">ABOUT US</li>
+                    <li className="items"><Link to={"/"} className="link-items">HOME</Link></li>
+                    <li className="items"><Link to={"/about"} className="link-items">ABOUT US</Link></li>
+                    <li className="items"><Link to={"/contact"} className="link-items">CONTACT US</Link></li>
                     <li className="items">CART</li>
                     <button className="login" onClick={()=> {
                         LoginButton==="Login"?setLoginButton("Logout"):setLoginButton("Login")

@@ -25,3 +25,7 @@ useEffect() => This is used to Re-renders the page after Calling the api.
 
 # Shimmer UI :- In this type of UI we loads a fake page until we got the data from the Backend API
 This Provides us a much better User Experience
+
+# 2 types of Routing in web apps
+    - Client Side Routing => This is we are using in our food delivery app means Whenever we click on the links then it will refresh the components which are already present inside the web app already created.
+    - Server Side Routing => In this Routing there is a call made by browser to fetches the data for the new page. 
