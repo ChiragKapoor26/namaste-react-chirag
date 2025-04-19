@@ -29,3 +29,6 @@ This Provides us a much better User Experience
 # 2 types of Routing in web apps
     - Client Side Routing => This is we are using in our food delivery app means Whenever we click on the links then it will refresh the components which are already present inside the web app already created.
     - Server Side Routing => In this Routing there is a call made by browser to fetches the data for the new page. 
+# Class Based Components
+    - Bsically it is a normal JavaScript class which inherits from React.Component class and have a render function inside it which returns a peaice of JSX.
+    - To handle props inside the Class Based Components we have constructor which receive the props and then inside the constructor we have to write super(props)

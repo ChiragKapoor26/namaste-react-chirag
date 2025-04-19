@@ -1,24 +1,30 @@
-import {useEffect,useState} from "react"
 import MenuItems from "./MenuItems";
 import Shimmer from "./Shimmer";
-import { useParams } from "react-router-dom";
-import { Menu_API } from "./utils/constants";
+import {useParams} from "react-router-dom";
+import useRestaurant_menu from "./utils/useRestaurant_menu";
 const Restaurant_menu = () => {
-    const [resInfo,setResInfo]= useState(null);
-    useEffect(()=>{
-        fetchData();
-    },[]);
     const { restid } = useParams();
-    const fetchData = async() => {
-        const data = await fetch(Menu_API+restid);
-        const jsonData = await data.json();
-        setResInfo(jsonData);
-    };
+    // Creating the custom hook for the fetching the data inside utils
+    const resInfo = useRestaurant_menu(restid);
     if(resInfo===null) return <Shimmer/>;
-    const {itemCards} = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-    const{name,costForTwoMessage,avgRatingString,locality,areaName} = resInfo?.data?.cards[2]?.card?.card?.info;
-    console.log(itemCards);
-    console.log(resInfo);
+    let index = 2; 
+    let {itemCards} = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[index]?.card?.card;
+    if(!itemCards){ resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.forEach((card, i) => {
+        if(card.card.card.itemCards){
+            index = i;
+            console.log(i);
+        }
+        // else index = 2;
+        // console.log(card.card.card.itemCards, i)
+        });
+        console.log("index: ", index);
+    }
+    itemCards = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[index]?.card?.card?.itemCards;
+    
+   
+    const{name,costForTwoMessage,avgRatingString,locality,areaName} = resInfo?.data?.cards[index]?.card?.card?.info;
+    // console.log(itemCards);
+    // console.log(resInfo);
     return ( 
         <div className="menu">
             <div className="part-res-cont">

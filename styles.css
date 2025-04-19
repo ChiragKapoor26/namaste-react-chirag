@@ -129,6 +129,8 @@
     text-decoration: none;
 }
 .incard {
+    height:100%;
+    width:100%;
     padding-inline: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -343,4 +345,26 @@
     height:90%;
     border-radius: 2rem;
     object-fit: cover;
+}
+.about-div {
+    background-color: rgb(64, 40, 88);
+    height:90vh;
+    color:white;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.user-card {
+    border:2px solid white;
+    padding:1rem;
+    margin-top: 0.5rem;
+    border-radius: 2rem;
+    background-color: #f4900c;
+    color:black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
