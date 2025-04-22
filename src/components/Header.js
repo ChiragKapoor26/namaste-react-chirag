@@ -9,7 +9,7 @@ const Header = () => {
         <div className="header flex justify-between px-8 items-center h-[10vh] w-[100%] py-1 text-white bg-[rgb(109,66,141)]">
             <div className="logo-container flex gap-4 items-center">
                 <img src={chefimg} className="logo-img h-[3rem] w-[3rem]"/>
-                <p className="logo-name text-2xl font-semibold text-[rgb(223,223,32)]">Amrit Rasoi</p>
+                <p className="logo-name text-2xl font-semibold text-[rgb(223,223,32)]">Food Cart</p>
             </div>
             <div className="nav-items">
                 <ul className="nav-list list-none flex gap-8 items-center">

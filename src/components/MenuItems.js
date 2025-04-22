@@ -1,11 +1,11 @@
 const MenuItems = (props) => {
     const {name,description,imageId,price} = props.data.card.info;
     return(
-        <div className="menu-items w-[100%] h-[15rem] flex items-center bg-[rgb(64,40,88)] rounded-[1rem]">
-            <div className="menu-items-text w-[75%] h-[100%] px-[1.5rem] flex flex-col justify-evenly">
-                <h3 className="menu-item-heading text-white">{name}</h3>
-                <p className="menu-item-cost text-white">₹{(Math.round(price/100))}</p>
-                <p className="menu-item-des border border-solid border-black p-[0.5rem] rounded-[0.5rem] bg-[#f4900c] text-black">
+        <div className="menu-items w-[100%] h-[17rem] flex items-center bg-[rgb(64,40,88)] rounded-[1rem]">
+            <div className="menu-items-text w-[75%] h-[100%] px-[1.5rem] flex flex-col justify-evenly py-[1rem]">
+                <h3 className="menu-item-heading text-white text-lg font-bold">{name}</h3>
+                <p className="menu-item-cost text-white font-extrabold text-lg">₹{(Math.round(price/100))}</p>
+                <p className="menu-item-des border border-solid border-black p-[0.5rem] rounded-[0.5rem] bg-[#f4900c] text-black text-base font-semibold">
                     {description}
                 </p>
             </div>
