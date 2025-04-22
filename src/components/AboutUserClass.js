@@ -16,7 +16,7 @@ class AboutUserClass extends React.Component {
         const{name} = this.props; 
         const{count} = this.state;        
         return (
-            <div className="user-card">
+            <div className="user-card border-[2px] border-solid border-white p-[1rem] mt-[0.5rem] rounded-[2rem] bg-[#f4900c] text-black flex flex-col items-center justify-center">
                 <h2>Name:{name}</h2>
                 <h2>Count:{count}</h2>
                 <button onClick={()=> {

@@ -9,7 +9,7 @@ import { createBrowserRouter,Outlet,RouterProvider} from "react-router-dom"
 import Restaurant_menu from "./components/Restaurant_menu"
 const AppLayOut = () => {
     return (
-        <div className="app">
+        <div className="app h-screen w-screen overflow-x-hidden">
             <Header/>
             <Outlet/>
         </div>
