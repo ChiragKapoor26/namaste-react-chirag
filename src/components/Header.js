@@ -6,7 +6,7 @@ const Header = () => {
     const [LoginButton,setLoginButton] = useState("Login");
     const onlinestatus = useOnlineStatus();
     return (
-        <div className="header flex justify-between px-8 items-center h-[10vh] w-[100%] py-1 text-white bg-[rgb(109,66,141)]">
+        <div className="header flex justify-between px-8 items-center h-[10vh] w-[100%] py-1 text-white bg-black">
             <div className="logo-container flex gap-4 items-center">
                 <img src={chefimg} className="logo-img h-[3rem] w-[3rem]"/>
                 <p className="logo-name text-2xl font-semibold text-[rgb(223,223,32)]">Food Cart</p>

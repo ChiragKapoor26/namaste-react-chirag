@@ -7,6 +7,16 @@ const Restaurant_menu = () => {
     // Creating the custom hook for the fetching the data inside utils
     const resInfo = useRestaurant_menu(restid);
     if(resInfo===null) return <Shimmer/>;
+    const cards = resInfo?.data?.cards || [];
+    const restaurantInfoCard = cards.find(card => 
+        card?.card?.card?.info !== undefined
+      )?.card?.card?.info || {};
+    const groupedCardData = cards.find(card => 
+        card?.groupedCard?.cardGroupMap?.REGULAR?.cards !== undefined
+      );
+    // Extract all menu category cards
+  const menuCategoryCards = groupedCardData?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
+  
     let index = 2; 
     let {itemCards} = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[index]?.card?.card;
     if(!itemCards){ resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.forEach((card, i) => {

@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card,{withPromotedLabel}from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
 const Body = () => {
     const [listOfRestaurant,setlistOfRestaurant] = useState([]);
     const [filteredRestaurant,setfilteredRestaurant] = useState([]);
+    console.log(listOfRestaurant);
     useEffect(()=> {
         fetchData();
     },[]);
     const [Searchvalue,setSearchvalue] = useState("");
+    // Creating a Higher Order functional Component
+    const RestauratLabelCard = withPromotedLabel(Card);
     // Creating the function for fetching the data from the api
     const fetchData = async () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.3316609&lng=75.6193539&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
@@ -38,9 +41,12 @@ const Body = () => {
             </div>
             <div className="rest-container w-[100%] h-auto flex flex-wrap justify-evenly gap-y-8 mb-4 mt-3">
                 {
-                    
                     filteredRestaurant.map((restaurant) => (
-                        <Link key={restaurant.info.id}to ={"/restaurant/"+restaurant.info.id} className="card h-[20rem] w-[23%] bg-[rgb(64,40,88)] rounded-[2rem] flex-col justify-evenly px-[0.5rem] py-[0.25rem] text-white cursor-pointer no-underline"><Card data={restaurant}/></Link>
+                        <Link key={restaurant.info.id}to ={"/restaurant/"+restaurant.info.id} className="card h-[20rem] w-[23%] bg-slate-800 rounded-[2rem] flex-col justify-evenly px-[0.5rem] py-[0.25rem] text-white cursor-pointer no-underline">
+                            {
+                                restaurant.info.withPromotedLabel ? <RestauratLabelCard data={restaurant}/> : <Card data={restaurant}/>
+                            }
+                        </Link>
                     ))
                 }
             </div>

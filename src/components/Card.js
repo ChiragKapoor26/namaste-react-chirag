@@ -18,4 +18,15 @@ const Card = (props) => {
         </div>
     )
 }
+// Creating a Higher Order Component with the name of withPromotedLabel
+export const withPromotedLabel = (Card) => {
+    return (props) => {
+        return(
+            <div>
+                <Label className="bg-black text-white">Promoted</Label>
+                <Card {...props}/>
+            </div>
+        )
+    }
+}
 export default Card;
