@@ -2,6 +2,7 @@ import MenuItems from "./MenuItems";
 import Shimmer from "./Shimmer";
 import {useParams} from "react-router-dom";
 import useRestaurant_menu from "./utils/useRestaurant_menu";
+import RestaurantCategory from "./RestaurantCategory";
 const Restaurant_menu = () => {
     const { restid } = useParams();
     // Creating the custom hook for the fetching the data inside utils
@@ -15,10 +16,12 @@ const Restaurant_menu = () => {
         card?.groupedCard?.cardGroupMap?.REGULAR?.cards !== undefined
       );
     // Extract all menu category cards
-  const menuCategoryCards = groupedCardData?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
-  
     let index = 2; 
-    let {itemCards} = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[index]?.card?.card;
+    let {itemCards} = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    const category = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>
+        c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+    console.log(category);
     if(!itemCards){ resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.forEach((card, i) => {
         if(card.card.card.itemCards){
             index = i;
@@ -29,10 +32,7 @@ const Restaurant_menu = () => {
         });
         console.log("index: ", index);
     }
-    itemCards = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[index]?.card?.card?.itemCards;
-    
-   
-    const{name,costForTwoMessage,avgRatingString,locality,areaName} = resInfo?.data?.cards[index]?.card?.card?.info;
+    const{name,costForTwoMessage,avgRatingString,locality,areaName} = resInfo?.data?.cards[2]?.card?.card?.info;
     // console.log(itemCards);
     // console.log(resInfo);
     return ( 
@@ -55,9 +55,7 @@ const Restaurant_menu = () => {
             </div>
             <div className="list-of-menu w-[75%] h-auto flex flex-col gap-4 px-[1rem] py-[1rem] mb-[2rem] flex-wrap border-[2px] border-solid border-black rounded-[1rem]">
                 {
-                    itemCards.map((rest)=>(
-                        <MenuItems data={rest} key={rest.card.info.id}/>
-                    ))
+                    category.map((category) => <RestaurantCategory data={category?.card?.card}/>)
                 }
             </div>
         </div>
