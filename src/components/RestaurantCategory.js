@@ -1,9 +1,9 @@
 import { useState } from "react";
 import MenuItems from "./MenuItems";
-const RestaurantCategory = ( {data} ) => {
-    const [Menudata,setMenudata] = useState(false);
+const RestaurantCategory = ( {data,Menudata,setshowIndex} ) => {
+    // const [Menudata,setMenudata] = useState(false);
     const handleClick = () => {
-        setMenudata(!Menudata);
+        setshowIndex();
     }
     return (
         <div className="w-[100%]">

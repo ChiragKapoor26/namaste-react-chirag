@@ -3,10 +3,13 @@ import Shimmer from "./Shimmer";
 import {useParams} from "react-router-dom";
 import useRestaurant_menu from "./utils/useRestaurant_menu";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 const Restaurant_menu = () => {
     const { restid } = useParams();
     // Creating the custom hook for the fetching the data inside utils
     const resInfo = useRestaurant_menu(restid);
+    // Creating the state variable for managing the accordian
+    const [showIndex,setshowIndex] = useState(null);
     if(resInfo===null) return <Shimmer/>;
     const cards = resInfo?.data?.cards || [];
     const restaurantInfoCard = cards.find(card => 
@@ -35,6 +38,7 @@ const Restaurant_menu = () => {
     const{name,costForTwoMessage,avgRatingString,locality,areaName} = resInfo?.data?.cards[2]?.card?.card?.info;
     // console.log(itemCards);
     // console.log(resInfo);
+    // Let's make the state variable for showing the state of the accordian
     return ( 
         <div className="menu flex w-[100%] flex-col items-center bg-[gainsboro] overflow-y-auto">
             <div className="part-res-cont w-[75%] flex flex-col justify-evenly items-center bg-[rgb(64,40,88)] text-white rounded-[2rem] mt-[2rem] pb-[2rem] border-[2px] border-solid border-black text-center">
@@ -55,7 +59,11 @@ const Restaurant_menu = () => {
             </div>
             <div className="list-of-menu w-[75%] h-auto flex flex-col gap-4 px-[1rem] py-[1rem] mb-[2rem] flex-wrap border-[2px] border-solid border-black rounded-[1rem]">
                 {
-                    category.map((category) => <RestaurantCategory data={category?.card?.card}/>)
+                    category.map((category,index) => <RestaurantCategory key = {category?.card?.card?.restid} 
+                    data={category?.card?.card}
+                    Menudata={index === showIndex ?true:false}
+                    setshowIndex = {()=> setshowIndex(index)}
+                    />)
                 }
             </div>
         </div>
