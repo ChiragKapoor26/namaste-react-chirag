@@ -10,6 +10,8 @@ const Restaurant_menu = () => {
     const resInfo = useRestaurant_menu(restid);
     // Creating the state variable for managing the accordian
     const [showIndex,setshowIndex] = useState(null);
+    // Creating the state variable for the clicking functionality
+    const [clicked,setclicked] = useState(false);
     if(resInfo===null) return <Shimmer/>;
     const cards = resInfo?.data?.cards || [];
     const restaurantInfoCard = cards.find(card => 
@@ -38,7 +40,6 @@ const Restaurant_menu = () => {
     const{name,costForTwoMessage,avgRatingString,locality,areaName} = resInfo?.data?.cards[2]?.card?.card?.info;
     // console.log(itemCards);
     // console.log(resInfo);
-    // Let's make the state variable for showing the state of the accordian
     return ( 
         <div className="menu flex w-[100%] flex-col items-center bg-[gainsboro] overflow-y-auto">
             <div className="part-res-cont w-[75%] flex flex-col justify-evenly items-center bg-[rgb(64,40,88)] text-white rounded-[2rem] mt-[2rem] pb-[2rem] border-[2px] border-solid border-black text-center">
@@ -61,8 +62,9 @@ const Restaurant_menu = () => {
                 {
                     category.map((category,index) => <RestaurantCategory key = {category?.card?.card?.restid} 
                     data={category?.card?.card}
-                    Menudata={index === showIndex ?true:false}
-                    setshowIndex = {()=> setshowIndex(index)}
+                    Menudata={(index === showIndex)&&clicked?true:false}
+                    setshowIndex = {() => setshowIndex(index)}
+                    setclicked = {() => setclicked(!clicked)}
                     />)
                 }
             </div>
