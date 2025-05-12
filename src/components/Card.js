@@ -1,6 +1,10 @@
 import { CDN_LINK } from "./utils/constants";
+import userContext from "./utils/userContext";
+import { useContext } from "react";
 const Card = (props) => {
     const {name,cloudinaryImageId,cuisines,avgRating} = props.data.info;
+    const data = useContext(userContext);
+    const {loginUser} = data;
     return (
         <div className="incard h-[100%] w-[100%] px-[0.5rem] flex-col justify-evenly flex">
             <div className="res-name w-[100%] flex justify-center items-center text-xl font-bold text-center">
@@ -15,6 +19,7 @@ const Card = (props) => {
             <div className="res-rating h-[10%] w-[100%] flex justify-center items-center text-[1em] font-[600] text-center">
                 <p className="ratingOfrest">{avgRating} Stars</p>
             </div>
+            <h4 className="text-bold text-center">{loginUser}</h4>
         </div>
     )
 }

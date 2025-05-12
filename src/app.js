@@ -1,4 +1,6 @@
 import React from "react"
+import { useState , useEffect} from "react"
+import userContext from "./components/utils/userContext"
 import ReactDOM from "react-dom/client"
 import Header from "./components/Header"
 import Body from "./components/Body"
@@ -8,11 +10,22 @@ import Error from "./components/Error"
 import { createBrowserRouter,Outlet,RouterProvider} from "react-router-dom"
 import Restaurant_menu from "./components/Restaurant_menu"
 const AppLayOut = () => {
+    // Creating the state Variable for the storing of the username
+    const [username,setusername] = useState("");
+    // Accessing the value of the user name
+    useEffect(()=> {
+        const data = {
+            name : "Chirag Kapoor"
+        }
+        setusername(data.name);
+    },[])
     return (
-        <div className="app h-screen w-screen overflow-x-hidden">
-            <Header/>
-            <Outlet/>
-        </div>
+        <userContext.Provider value = {{loginUser:username}}>
+            <div className="app h-screen w-screen overflow-x-hidden">
+                <Header/>
+                <Outlet/>
+            </div>
+        </userContext.Provider>
     )
 }
 const appRouter = createBrowserRouter([

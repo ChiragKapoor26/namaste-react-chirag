@@ -1,10 +1,13 @@
 import chefimg from "../images/chef.svg"
-import {useState} from "react";
+import {useContext, useState,userContext} from "react";
 import {Link} from "react-router-dom"
 import useOnlineStatus from "./utils/useOnlineStatus";
+import userContext from "./utils/userContext";
 const Header = () => {
     const [LoginButton,setLoginButton] = useState("Login");
     const onlinestatus = useOnlineStatus();
+    const data = useContext(userContext);
+    const {loginUser} = data;
     return (
         <div className="header flex justify-between px-8 items-center h-[10vh] w-[100%] py-1 text-white bg-black">
             <div className="logo-container flex gap-4 items-center">
@@ -21,6 +24,7 @@ const Header = () => {
                     <button className="login outline-none h-[100%] px-[0.5rem] py-[0.25rem] rounded-[0.4rem] border-none bg-[#ffa800] text-[black] text-[1.1rem] font-[600] flex justify-center items-center cursor-pointer" onClick={()=> {
                         LoginButton==="Login"?setLoginButton("Logout"):setLoginButton("Login")
                     }}>{LoginButton}</button>
+                    <li className="font-bold">{loginUser}</li>
                 </ul>
             </div>
         </div>
